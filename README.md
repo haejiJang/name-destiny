@@ -27,7 +27,7 @@
 
 ```bash
 git clone https://github.com/haejiJang/name-destiny.git
-cd name-match-test
+cd name-destiny
 ```
 
 #### 직접 다운로드하는 경우:
