@@ -1,0 +1,16 @@
+{
+  "name": "name-destiny",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "haejiJang",
+  "devDependencies": {
+    "electron": "^19.0.4"
+  },
+  "dependencies": {
+    "hangul-js": "^0.2.6"
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이름 궁합 테스트</title>
+    <meta
+      name="description"
+      content="두 사람의 이름으로 궁합을 계산해보는 재미있는 게임입니다."
+    />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <div id="header">
+      <div id="title">이름 궁합 테스트</div>
+      <div id="window-controls">
+        <button id="minimize-button" aria-label="창 최소화"></button>
+        <button id="close-button" aria-label="창 닫기"></button>
+      </div>
+    </div>
+
+    <!-- Main Game Screen -->
+    <div id="main-screen">
+      <!-- P1 하트화살표 P2 섹션 -->
+      <div id="player-section">
+        <div id="p1-text">P1</div>
+        <img src="./assets/images/heart-arrow.png" alt="heart arrow" />
+        <div id="p2-text">P2</div>
+      </div>
+
+      <!-- 입력 필드 섹션 -->
+      <div id="input-section">
+        <div id="p1-input-container">
+          <input
+            id="p1-input"
+            type="text"
+            maxlength="4"
+            aria-label="첫 번째 사람 이름"
+          />
+        </div>
+        <div id="p2-input-container">
+          <input
+            id="p2-input"
+            type="text"
+            maxlength="4"
+            aria-label="두 번째 사람 이름"
+          />
+        </div>
+      </div>
+
+      <!-- START 버튼 -->
+      <div id="start-button" aria-label="궁합 테스트 시작">
+        <img src="./assets/images/start-button.png" alt="start button" />
+        <div>START</div>
+      </div>
+    </div>
+
+    <div id="destiny-result-container">
+      <div id="destiny-result">
+        <div class="names" id="result-names">
+          <div class="name" id="result-name1"></div>
+          <img
+            class="heart-arrow"
+            src="./assets/images/heart-arrow.png"
+            alt="하트 화살표"
+          />
+          <div class="name" id="result-name2"></div>
+        </div>
+        <div class="name-combine" id="result-nameCombine"></div>
+        <div class="name-stroke-result" id="result-nameStrokeResult"></div>
+        <div id="result-destinyProcess"></div>
+        <div id="result-process" class="result-div"></div>
+        <div id="result-final" class="result-div"></div>
+      </div>
+    </div>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>
