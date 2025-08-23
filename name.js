@@ -132,46 +132,46 @@ function nameDestiny(name, name2) {
   // 1단계: 두 이름을 번갈아 배치
   let combinedNameArray = nameCombine(name, name2);
 
-  let calculationSteps = [];
+  let steps = [];
 
   // 2단계: 첫 번째 획수 계산 - 인접한 글자들의 획수 합산
-  let firstStepNumbers = [];
+  let firstStep = [];
   for (let i = 0; i < combinedNameArray.length - 1; i++) {
     let combinedChars = Hangul.disassemble([
       combinedNameArray[i],
       combinedNameArray[i + 1],
     ]);
     let combinedStroke = getStrokes(combinedChars); // 기본값: 10 이상이면 한 자릿수로 변환
-    firstStepNumbers.push(combinedStroke);
+    firstStep.push(combinedStroke);
   }
 
-  let currentNumbers = firstStepNumbers;
-  calculationSteps.push(currentNumbers);
+  let current = firstStep;
+  steps.push(current);
   let isFinished = false;
-  let finalCompatibility;
+  let result;
 
   // 3단계: 숫자가 2개가 될 때까지 반복 계산
   while (!isFinished) {
-    let nextStepNumbers = [];
+    let next = [];
 
     // 인접한 숫자끼리 더하기 (예: [1,2,3,4] → [3,5,7])
-    for (let i = 0; i < currentNumbers.length - 1; i++) {
-      let sum = currentNumbers[i] + currentNumbers[i + 1];
+    for (let i = 0; i < current.length - 1; i++) {
+      let sum = current[i] + current[i + 1];
       if (sum >= 10) {
         sum -= 10; // 한 자릿수로 만들기
       }
-      nextStepNumbers.push(sum);
+      next.push(sum);
     }
 
-    currentNumbers = nextStepNumbers;
+    current = next;
 
     // 숫자가 2개가 되면 완료
-    if (currentNumbers.length == 2) {
-      finalCompatibility = currentNumbers;
+    if (current.length == 2) {
+      result = current;
       isFinished = true;
       break;
     }
-    calculationSteps.push(currentNumbers);
+    steps.push(current);
   }
 
   // 최종 결과 객체 생성
@@ -180,8 +180,8 @@ function nameDestiny(name, name2) {
     name2: name2, // 두 번째 이름
     combinedNameArray: combinedNameArray, // 번갈아 배치된 이름 (예: ["철", "영", "수", "희"])
     nameStrokeArray: nameStrokes(combinedNameArray), // 각 글자의 획수 (예: [11, 5, 4, 5])
-    processArray: calculationSteps, // 단계별 계산 과정
-    result: finalCompatibility, // 최종 궁합 결과 (2자리 숫자)
+    processArray: steps, // 단계별 계산 과정
+    result: result, // 최종 궁합 결과 (2자리 숫자)
   };
 
   return compatibilityResult;
